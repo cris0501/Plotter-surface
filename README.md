@@ -21,6 +21,8 @@ La pantalla no entiende de ángulos, usa matrices de píxeles. Se me ocurrio que
 
 Con esto, 3*sen(theta) le da esa longitud en pantalla. Claro que esto solo aplica para un plano, para el caso de un espacio 3D, debia no solo transformar las coordenadas polares a rectangulares sino que segun el ángulo de rotación, debia modificar la longitud respecto del origen. Fue aqui donde modifique un poco la funcion de transformacion multiplicando por funciones trigonometricas con la funcion que no solo tener el valor en rectangulares, sino que directamente entregaba su posicion en la pantalla.
 
+![Funcion x*x + 3*y](Cap.png)
+
 #### - No era MATLAB, no iba a cambiar el mundo, pero era mío y funcionaba -
 
 ---
