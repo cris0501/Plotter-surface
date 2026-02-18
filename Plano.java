@@ -90,9 +90,18 @@ public class Plano extends JPanel{
 
 	private int[] transform (int x, int y, int z){
 		int[] t = new int[3];
-		t[0] = (this.getWidth()/2)+(int)(Math.cos(Math.toRadians(obs[1]))*((-1)*x*15)); // -x
-		t[1] = (this.getHeight()/2)-((int)(Math.sin(Math.toRadians(obs[2]))*(y*15)*(Math.cos(Math.toRadians(obs[1]))) ));
-		t[2] = (this.getHeight()/2)+(int)(Math.cos(Math.toRadians(obs[2]))*z*15);
+		double theta = Math.toRadians(obs[1]);
+		double phi   = Math.toRadians(obs[2]);
+		// screen_x = cx - sin(θ)·x + cos(θ)·y
+		t[0] = (this.getWidth()/2)
+			- (int)(Math.sin(theta)*x*15)
+			+ (int)(Math.cos(theta)*y*15);
+		// screen_y (xy part) = cy + sin(φ)·cos(θ)·x + sin(φ)·sin(θ)·y
+		t[1] = (this.getHeight()/2)
+			+ (int)(Math.sin(phi)*Math.cos(theta)*x*15)
+			+ (int)(Math.sin(phi)*Math.sin(theta)*y*15);
+		// screen_y (z part)  = cy + cos(φ)·z
+		t[2] = (this.getHeight()/2)+(int)(Math.cos(phi)*z*15);
 		return t;
 	}
 
